@@ -15,7 +15,7 @@ export const routes = {
     '/home-login':homeLogin(),
     '/login':login,
     '/wall' : wall,
-    '/profile' : profile
+    '/profile' : profile(),
 };
 
 const rootDiv = document.getElementById('root');

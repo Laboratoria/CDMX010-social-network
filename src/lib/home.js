@@ -1,7 +1,7 @@
 
 export const myFunction = () => {
   // aqui tu codigo
-  console.log('Hola mundo!');
+ 
 };
 
 //Primera página donde te muestra los botones para acceder a logearte u otro botón para entrar si ya estas logueada.

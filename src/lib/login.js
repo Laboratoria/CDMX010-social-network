@@ -28,7 +28,7 @@ export const login = `
 
 export const myFunction1 = () => {
   // aqui tu codigo
-  console.log('Hola mundote!');
+
 };
 
   
