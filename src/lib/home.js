@@ -10,7 +10,3 @@ export const home = () => `
     </form>
   </div>
   `;
-
-
-
-

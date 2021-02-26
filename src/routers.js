@@ -24,8 +24,3 @@ export const onNavigate = (pathname) => {
 };
 
 rootDiv.innerHTML =routes[window.location.pathname];
-
-
-
-
-
