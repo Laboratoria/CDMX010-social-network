@@ -29,7 +29,7 @@ div.home {
 };
 
 element.style {}
-.logo {
+.logoHome {
     padding: 29% 20%;
     margin: 0%;
     display: flex;
@@ -39,16 +39,16 @@ element.style {}
 }
 
 element.style {}
-.flexCenter {
+.containerFlexCenter {
     display: flex;
     flex-direction: column;
     justify-content: center;
-        padding: 0% 5% 26% 24%;
+    padding: 0% 5% 26% 24%;
     margin: 0% 5% 0% 0%;
 }
 
 element.style {} 
-button.buttons {
+button.buttonHome {
     background: #FF723F;
     border-radius: 24%;
     width: 119px;
@@ -74,7 +74,7 @@ element.style {}
 }
 
 element.style {}
-.logo2 {
+.logoHomeLogin {
     padding: 12% 27%;
     margin: 0%;
     display: flex;
@@ -94,7 +94,7 @@ h2 {
 }
 
 element.style {}
-.formule {
+.formLogin {
     display: flex;
     flex-direction: column;
     margin: 0%;
@@ -111,7 +111,7 @@ h3 {
 }
 
 element.style {}
-.flexCenter2 {
+.containerFlexCenter2 {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -119,7 +119,7 @@ element.style {}
 };
 
 element.style {}
-.formLogin {
+.formLoginInputs {
     display: flex;
     text-align: center;
     border-radius: 20%;
@@ -132,7 +132,7 @@ element.style {}
 };
 
 element.style {} 
-button.buttons2 {
+button.buttonLogin {
     background: #FF723F;
     border-radius: 24%;
     width: 122px;
@@ -148,7 +148,7 @@ button.buttons2 {
 };
 
 element.style {}
-.homeLogin {
+.home-login {
     background-image: url("assets/login.png");
     display: flex;
     flex-direction: column;
@@ -158,7 +158,7 @@ element.style {}
 }
 
 element.style {}
-.flexCenter3 {
+.containerFlexCenter3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -167,7 +167,7 @@ element.style {}
 };
 
 element.style {}
-.formLogin2 {
+.styleFormLoginHome {
     display: flex;
     text-align: center;
     border-radius: 20%;
@@ -180,7 +180,7 @@ element.style {}
 };
 
 element.style {} 
-button.buttons3 {
+button.buttonsLogin {
     background: #FF723F;
     border-radius: 24%;
     width: 122px;
@@ -196,24 +196,27 @@ button.buttons3 {
 };
 
 element.style {}
-.logo2 {
+.logoLogin {
     padding: 22% 20%;
     margin: 0%;
     display: flex;
     justify-content: center;
     width: 168px;
     height: 115px;
-}
+};
 
 element.style {}
-.google {
-    padding: 13% 40%;
-    margin: 0%;
+button#buttonGoogle {
+    background-image: url(assets/google-boton.png);
+    padding: 6% 16%;
+    border-radius: 12%;
+    border: medium;
+    margin: 6% 0% 6% 32%;
     display: flex;
     justify-content: center;
     width: 54px;
     height: 40px;
-}
+};
 
 element.style {}
 .wall {
@@ -226,7 +229,7 @@ element.style {}
 }
 
 element.style {}
-.head {
+.headerWall {
     display: flex;
     justify-content: space-around;
     background: #5A1846;
@@ -244,7 +247,7 @@ element.style {}
 };
 
 element.style {}
-.flexCenter4 {
+.containerFlexCenter4 {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -254,7 +257,7 @@ element.style {}
 };
 
 element.style {}
-#newPublication {
+#InputNewPublication {
     display: flex;
     justify-content: center;
     width: 63%;
@@ -262,7 +265,7 @@ element.style {}
 };
 
 element.style {} 
-button.hold {
+button.buttonNewPublication {
     background: #FF723F;
     border-radius: 24%;
     width: 122px;

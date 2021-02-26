@@ -12,89 +12,63 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-
-export function registrarse (){
+//Register function
+export function register (){
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
-  //alert("email="+email+" password="+password);
-
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((result) => {
-      //Signed in 
-      
-          onNavigate('/wall');
-      
-    // } else {
-    //     showModals(noVerification);
-
-    //     firebase.auth().signOut();
+      //Signed in
+      onNavigate('/wall')
+      // } else {
+      //     showModals(noVerification);
+      //     firebase.auth().signOut();
     })
     .catch((error) => {
-        console.log(error);
       var errorMessage = error.message;
-      // ..
       alert(errorMessage, 4000);
     })
   };
-    
 
-// firebase.auth().onAuthStateChanged((user) => {
-//   if (user) {
-//     // User is signed in, see docs for a list of available properties
-//     // https://firebase.google.com/docs/reference/js/firebase.User
-//     var uid = user.uid;
-//     // ...
-//     document.getElementById("loginStatus").innerHTML="Logeado "+user.email;
-//     console.log(user);
-//   } else {
-//     // User is signed out
-//     // ...
-//     document.getElementById("login").innerHTML="No logeado "+user.email;
-//   }
-// });
+//Login google function
+export function loginGoogle (){
+  var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth()
+  .signInWithPopup(provider)
+    .then((result) => {
+      var credential = result.credential;
+      var token = credential.accessToken;
+      var user = result.user;
+      onNavigate('/wall');
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorMessage, 4000);
+      var email = error.email;
+      credential = error.credential;
+   });
+};
 
+//Access jalo function
+export function accessJalo (){
+  var emailLog = document.getElementById('emailOldUser').value;
+  var passwordLog = document.getElementById('passwordOldUser').value;
+  firebase.auth().signInWithEmailAndPassword(emailLog, passwordLog)
+    .then((user) => {
+      onNavigate('/wall');
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorMessage, 4000);
+    });
 
-
-
-// export function acceso (){
-//   var emailLog = document.getElementById('emailLog').value;
-//   var passwordLog = document.getElementById('passwordLog').value;
-//   //alert("email="+email+" password="+password);
-//   firebase.auth().signInWithEmailAndPassword(emailLog, passwordLog)
-//     .then((user) => {
-//       // Signed in
-//       // ...
-//     })
-//     .catch((error) => {
-//       var errorCode = error.code;
-//       var errorMessage = error.message;
-//       alert(errorMessage);
-//     });
-// }
-
-// function loginGoogle (){
-//   const provider = new firebase.auth.GoogleAuthProvider()
-
-//   firebase.auth()
-// .signInWithPopup(provider)
-// .then((result) => {
-//   /** @type {firebase.auth.OAuthCredential} */
-//   var credential = result.credential;
-
-//   // This gives you a Google Access Token. You can use it to access the Google API.
-//   var token = credential.accessToken;
-//   // The signed-in user info.
-//   var user = result.user;
-//   // ...
-// }).catch((error) => {
-//   // Handle Errors here.
-//   var errorCode = error.code;
-//   var errorMessage = error.message;
-//   // The email of the user's account used.
-//   var email = error.email;
-//   // The firebase.auth.AuthCredential type that was used.
-//   var credential = error.credential;
-//   // ...
-// });
-
-// }
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        var uid = user.uid;
+      } 
+      else {
+      }
+    });
+}
