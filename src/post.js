@@ -1,7 +1,5 @@
-export const post = (target) => {
-  const templeteHome = `
-    <div id="post-container"></div>
-  `;
-  target.innerHTML = templeteHome;
-};
-export default post;
+// import CardPost from './components/CardPost';
+
+export const post = `
+  <div id="post-container"></div>
+`;
