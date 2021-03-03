@@ -1,6 +1,7 @@
 import { onNavigate } from './routers.js';
+//import {showAlert} from './lib/login.js';
 
-var firebaseConfig = {
+let firebaseConfig = {
   apiKey: "AIzaSyAphkTjnCyuMEe9J2BlkLSnRf11LDrRKq8",
   authDomain: "jaloredsocial.firebaseapp.com",
   projectId: "jaloredsocial",
@@ -11,64 +12,75 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+export let db = firebase.firestore();
 
 //Register function
 export function register (){
-  var email = document.getElementById('email').value;
-  var password = document.getElementById('password').value;
-  firebase.auth().createUserWithEmailAndPassword(email, password)
+  let name = document.getElementById('name').value;
+  let email = document.getElementById('email').value;
+  let password = document.getElementById('password').value;
+    firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((result) => {
       //Signed in
-      onNavigate('/wall')
+      onNavigate('/wall');
       // } else {
       //     showModals(noVerification);
       //     firebase.auth().signOut();
-    })
+      //showAlert()
+      
+      alert(`Bienvenidx a Jalö ${name}
+      !Tu red social para escribir sobre tus lugares magicos en el mundo!`);
+  })
     .catch((error) => {
-      var errorMessage = error.message;
+      console.log(error);
+      let errorMessage = error.message;
       alert(errorMessage, 4000);
     })
   };
 
 //Login google function
 export function loginGoogle (){
-  var provider = new firebase.auth.GoogleAuthProvider();
+  let provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth()
   .signInWithPopup(provider)
     .then((result) => {
-      var credential = result.credential;
-      var token = credential.accessToken;
-      var user = result.user;
+      let credential = result.credential;
+      let token = credential.accessToken;
+      let user = result.user;
       onNavigate('/wall');
     })
     .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      console.log(error);
+      let errorCode = error.code;
+      let errorMessage = error.message;
       alert(errorMessage, 4000);
-      var email = error.email;
+      let email = error.email;
       credential = error.credential;
    });
 };
 
 //Access jalo function
 export function accessJalo (){
-  var emailLog = document.getElementById('emailOldUser').value;
-  var passwordLog = document.getElementById('passwordOldUser').value;
+  let emailLog = document.getElementById('emailOldUser').value;
+  let passwordLog = document.getElementById('passwordOldUser').value;
   firebase.auth().signInWithEmailAndPassword(emailLog, passwordLog)
-    .then((user) => {
+    .then(result => {
       onNavigate('/wall');
-    })
+      })
+      //$('.modal').modal('close')
     .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      console.log(error);
+      let errorCode = error.code;
+      let errorMessage = error.message;
       alert(errorMessage, 4000);
     });
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        var uid = user.uid;
+        let uid = user.uid;
       } 
       else {
       }
-    });
-}
+    })
+};
+

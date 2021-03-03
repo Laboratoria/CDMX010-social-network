@@ -1,5 +1,5 @@
 import { onNavigate } from './routers.js';
-import { register, loginGoogle, accessJalo } from './firebase.js';
+import { register, loginGoogle, accessJalo, db } from './firebase.js';
 
 //Función para mandar llamar el id que se usa para el evento para ir de home a login.
 const createNewUser = () => {
@@ -57,3 +57,64 @@ const buttonGoogleInput = () => {
     });
 };
 window.addEventListener('DOMContentLoaded', () => buttonGoogleInput());
+
+
+//Publicated porst in Wall
+
+const buttonSavePublication = () => {
+    const saveTask = (title, description) => 
+        db.collection('tasks').doc().set({
+                title,
+                description
+            });
+    const getTasks = () => db.collection('Tasks').get();
+    const onGetTasks = (callback) => db.collection('tasks').onSnapshot(callback);
+    console.log(onGetTasks);
+
+    window.addEventListener('DOMContentLoaded',() => async (e) => {
+        const tasks = await getTasks();
+        console.log(tasks);
+        const taskContainer = document.getElementById('tasks-container');
+        onGetTasks((querySnapshot) => {
+                taskContainer.innerHTML ='';
+             querySnapshot.forEach(doc => {
+                console.log(doc.data());
+                console.log('tambien escucho');
+                    
+                const task = doc.data();
+    
+                taskContainer.innerHTML += `
+                    <div class='card'>
+                        <h3>${task.title}</h3>
+                        <p>${task.description}</p>
+                        <div>
+                            <button id='avatarPublication'></button>
+                            <button id='desenviaja'></button> 
+                        </div>
+                        <div>
+                            <button class='buttonNewPublication'>Borrar</button>
+                            <button class='buttonNewPublication'>Borrar</button>
+                        </div>
+                    </div>`
+                    })
+        })
+    });
+
+    let taskForm = document.getElementById('task-formPublication');
+
+    taskForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const title = taskForm['task-InputNewPublication'];
+        const description = taskForm['task-contentPublication'];
+
+        await saveTask(title.value, description.value)
+
+        await getTasks();
+        taskForm.reset();
+        title.focus();
+        console.log('si escucho');
+               
+    })
+};
+
+window.addEventListener('click', buttonSavePublication());

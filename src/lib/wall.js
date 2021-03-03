@@ -3,23 +3,21 @@ export const wall = () =>`
     <div class='wall'>
         <div class='headerWall'>
             <img src='assets/logo-home.png'>
-            <img src='assets/avatar.png'>
+            <img id='avatar' src='assets/avatar.png'>
         </div>
         <div class='createPublication'>
-            <form class='containerFlexCenter4'>
-                <input type='text' id='InputNewPublication' placeholder='Escribe...'></input>
-                <button class='buttonNewPublication'>Publicar</button>
+            <form class='containerFlexCenter4' id='task-formPublication'>
+                <div class='card'>    
+                    <div id='from-groupInput'>
+                        <input type='text' id='task-InputNewPublication' placeholder='Escribe...'></input>
+                    </div>
+                    <div class='form-group'>
+                        <textarea class="toPublicated" id='task-contentPublication' rows="4" cols="26"></textarea>
+                    </div>
+                    <button class='buttonNewPublication' id='save'>Publicar</button>
+                </div>
             </form>
         </div>
-        <div class='publication'>
-                <button id='avatarPublication'></button>
-                <textarea class="alreadyPublicated"  rows="4" cols="32"></textarea>
-                <button id='enviaja'></button>
-        </div>
-        <div class='publication'>
-                <button id='avatarPublication'></button>
-                <textarea class="alreadyPublicated"  rows="4" cols="32"></textarea>
-                <button id='desenviaja'></button>           
-        </div>    
-    </div>
+        <div class='createPublication' id='tasks-container'></div>
+    </div> 
     `;
