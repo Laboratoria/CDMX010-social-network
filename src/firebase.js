@@ -1,5 +1,5 @@
 import { onNavigate } from './routers.js';
-//import {showAlert} from './lib/login.js';
+//import {verificarPasswords} from './main.js';
 
 let firebaseConfig = {
   apiKey: "AIzaSyAphkTjnCyuMEe9J2BlkLSnRf11LDrRKq8",
@@ -16,13 +16,21 @@ export let db = firebase.firestore();
 
 //Register function
 export function register (){
-  let name = document.getElementById('name').value;
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
+  let password2 = document.getElementById('passwordToVerify').value;
+  if (password != password2) {
+    document.getElementById("error").classList.add("mostrar");
+    return false;
+  } 
+  if (password === password2){
+    document.getElementById("error").classList.remove("mostrar");
+    document.getElementById("ok").classList.remove("ocultar");
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((result) => {
       //Signed in
-      onNavigate('/wall');
+      //verificarPasswords();
+      onNavigate('/wall')
       // } else {
       //     showModals(noVerification);
       //     firebase.auth().signOut();
@@ -36,7 +44,13 @@ export function register (){
       let errorMessage = error.message;
       alert(errorMessage, 4000);
     })
+  
+    return true;
+  }
+
   };
+  
+  
 
 //Login google function
 export function loginGoogle (){

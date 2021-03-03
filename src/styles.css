@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
 
+.ocultar {
+    display: none;
+}
+ 
+.mostrar {
+    display: block;
+}
+
+
 body {
     margin: 0%;
     padding: 0%;
@@ -370,5 +379,6 @@ element.style {}
     background-image: url(assets/desaviona.png);
     width: 0%;
 };
+
 
 
