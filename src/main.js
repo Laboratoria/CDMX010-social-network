@@ -1,6 +1,7 @@
 import { onNavigate } from './routers.js';
 import { register, loginGoogle, accessJalo } from './firebase.js';
 
+
 //Función para mandar llamar el id que se usa para el evento para ir de home a login.
 const createNewUser = () => {
     let createUser = document.getElementById('newUser');
@@ -25,10 +26,12 @@ const oldUser1 = () => {
 window.addEventListener('DOMContentLoaded', () => oldUser1());
 
 
+
 //login a wall
 const buttonLogin = () => {
     let youLogin = document.getElementById('checkIn');
     youLogin.addEventListener('click', (e) => {
+        //verificarPasswords()
         e.preventDefault();
         register();
     });
@@ -57,3 +60,5 @@ const buttonGoogleInput = () => {
     });
 };
 window.addEventListener('DOMContentLoaded', () => buttonGoogleInput());
+
+
