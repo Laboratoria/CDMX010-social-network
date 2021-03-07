@@ -14,10 +14,11 @@ export const wall = () =>`
                     <div class='form-group'>
                         <textarea class="toPublicated" id='task-contentPublication' rows="4" cols="26"></textarea>
                     </div>
-                    <button class='buttonNewPublication' id='save'>Publicar</button>
+                    <button type='submit' class='buttonNewPublication' id='save'>Publicar</button>
                 </div>
             </form>
         </div>
-        <div class='createPublication' id='tasks-container'></div>
+        <div class='createPublication2' id='tasks-container'>
+        </div>
     </div> 
     `;

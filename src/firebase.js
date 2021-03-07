@@ -1,5 +1,5 @@
 import { onNavigate } from './routers.js';
-//import {verificarPasswords} from './main.js';
+import { cardWall } from './lib/card-wall.js';
 
 let firebaseConfig = {
   apiKey: "AIzaSyAphkTjnCyuMEe9J2BlkLSnRf11LDrRKq8",
@@ -12,11 +12,12 @@ let firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-export let db = firebase.firestore();
+
 
 //Register function
 export function register (){
   let email = document.getElementById('email').value;
+  let name = document.getElementById('name').value;
   let password = document.getElementById('password').value;
   let password2 = document.getElementById('passwordToVerify').value;
   if (password != password2) {
@@ -30,7 +31,7 @@ export function register (){
     .then((result) => {
       //Signed in
       //verificarPasswords();
-      onNavigate('/wall')
+      onNavigate('/wall');
       // } else {
       //     showModals(noVerification);
       //     firebase.auth().signOut();
@@ -45,8 +46,22 @@ export function register (){
       alert(errorMessage, 4000);
     })
   
-    return true;
+    return true; 
   }
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      let uid = user.uid;
+      db.collection('Histories')
+      .get()
+      .then((snapshot) => {
+        console.log(snapshot.docs);
+        setupPost(snapshot.docs);
+      })
+    } 
+    else {
+      console.log('auth: dign out')
+    }
+  });
 
   };
   
@@ -71,6 +86,20 @@ export function loginGoogle (){
       let email = error.email;
       credential = error.credential;
    });
+   firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      let uid = user.uid;
+      db.collection('Histories')
+      .get()
+      .then((snapshot) => {
+        console.log(snapshot.docs);
+        setupPost(snapshot.docs);
+      })
+    } 
+    else {
+      console.log('auth: dign out')
+    }
+  });
 };
 
 //Access jalo function
@@ -92,9 +121,65 @@ export function accessJalo (){
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         let uid = user.uid;
+        db.collection('Histories')
+        .get()
+        .then((snapshot) => {
+          console.log(snapshot.docs);
+          setupPost(snapshot.docs);
+        })
       } 
       else {
+        console.log('auth: dign out')
       }
-    })
+    });
 };
+
+//publication in wall
+const db = firebase.firestore();
+export const historyRef = (title, description) => {
+  db.collection('Histories').doc().set({
+    title,
+    description,
+    }).then(function() {
+      console.log('history saved');
+    }).catch ((error)  => {
+      console.log('Got an error: '. error);
+       console.log(error);
+     });
+
+    console.log(historyRef);
+    console.log('funciono');
+    console.log(title, description)}; 
+
+
+// let praintCards = document.querySelector("tasks-container");
+let praintCards = document.querySelector('#tasks-container');
+const setupPost = data => {
+  if (data.length) {
+  let html = '';
+  data.forEach(doc => {
+    const post = doc.data()
+    console.log(post);
+    const praint = cardWall(post);
+    html += praint;
+    });
+  praintCards.innerHTML=html;
+} else {
+  praintCards.innerHTML='<p>Login to see Posts</p>';
+}};
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    let uid = user.uid;
+    db.collection('Histories')
+    .get()
+    .then((snapshot) => {
+      console.log(snapshot.docs);
+      setupPost(snapshot.docs);
+    })
+  } 
+  else {
+    console.log('auth: dign out')
+  }
+});
 

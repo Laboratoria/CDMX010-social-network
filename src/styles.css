@@ -270,6 +270,15 @@ element.style {}
 };
 
 element.style {}
+.createPublication2 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0%;
+    padding: 0% 36% 0% 19%;
+};
+
+element.style {}
 .card {
     display: flex;
     flex-direction: column;
@@ -277,6 +286,98 @@ element.style {}
     padding: 2%;
     margin: 0% 34% 0% 0%;
     font-family: 'Comfortaa', cursive;
+};
+
+element.style {}
+.divCard {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0% 0% 0% 10%;
+    padding: 2% 7%;
+};
+
+element.style {}
+.textCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: ridge;
+    padding: 9% 0% 0% 6%;
+    margin: 0% -82% 2% -52%;
+    font-family: 'Comfortaa', cursive;
+};
+
+element.style {}
+h3.h3Publication {
+    margin: 0%;
+    display: flex;
+    justify-content: end;
+    color: #5A1846;
+    padding: 0% 55% 0% 0%;
+}
+
+element.style {}
+.avatarsCard{
+    display: flex;
+    justify-content: flex-start;
+    margin: 0%;
+    width: 266%;
+    height: 0%;
+};
+
+element.style {}
+.enviajaCard{
+    display: flex;
+    justify-content: flex-start;
+    width: 265%;
+    padding: 0% 0%;
+    margin: 0%;
+};
+
+element.style {}
+.buttonCard{
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+    margin: 0% 34% 0% 0%;
+    font-family: 'Comfortaa', cursive;
+};
+
+element.style {} 
+button#avatarPublication {
+    display: flex;
+    justify-content: center;
+    background-image: url(assets/avatar-publication.png);
+    padding: 15% 0% 0% 0%;
+    margin: 0% 100% 0% -21%;
+    width: 16%;
+};
+
+element.style {} 
+button#desenviaja {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 13% 13% 0% 0%;
+    margin: 0% 6% 0% -20%;
+    background-image: url(assets/desaviona.png);
+    width: 0%;
+};
+
+element.style {} 
+button.buttonNewPublication2 {
+    background: #FF723F;
+    border-radius: 24%;
+    width: 91%;
+    height: 0%;
+    color: #EAEAEA;
+    display: flex;
+    justify-content: center;
+    padding: 8% 20% 9% 25%;
+    font-family: 'Comfortaa', cursive;
+    font-size: medium;
+    border: thin;
+    margin: 2% 22% 8% 0%;
 };
 
 element.style {}
