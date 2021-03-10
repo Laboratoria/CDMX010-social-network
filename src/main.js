@@ -99,7 +99,7 @@ buttonDelete.forEach(history => {
          deleteHistory(e.target.dataset.id);
         })
     })
-
+//edit
 const buttonEdit = document.querySelectorAll('.editPublication');
 buttonEdit.forEach(history => {
     history.addEventListener('click', async (e) => {
