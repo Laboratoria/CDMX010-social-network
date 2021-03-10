@@ -12,7 +12,7 @@ export const cardWall = (post) =>{
                 <button id='desenviaja'></button> 
             </div>
             <div class='buttonCard'>
-                <button class='buttonNewPublication2'>Editar</button>
-                <button class='buttonNewPublication2'>Borrar</button>
+                <button class='buttonNewPublication2 editPublication' data-id='${post.id}'>Editar</button>
+                <button  class='buttonNewPublication2 deletePublication' data-id='${post.id}'>Borrar</button>
             </div>
         </div>`};

@@ -1,5 +1,5 @@
 import { onNavigate } from './routers.js';
-import { cardWall } from './lib/card-wall.js';
+import { setupPost } from './main.js';
 
 let firebaseConfig = {
   apiKey: "AIzaSyAphkTjnCyuMEe9J2BlkLSnRf11LDrRKq8",
@@ -45,26 +45,11 @@ export function register (){
       let errorMessage = error.message;
       alert(errorMessage, 4000);
     })
-  
     return true; 
   }
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      let uid = user.uid;
-      db.collection('Histories')
-      .get()
-      .then((snapshot) => {
-        console.log(snapshot.docs);
-        setupPost(snapshot.docs);
-      })
-    } 
-    else {
-      console.log('auth: dign out')
-    }
-  });
+  firebase.auth().onAuthStateChanged(user);
+};
 
-  };
-  
   
 
 //Login google function
@@ -86,20 +71,7 @@ export function loginGoogle (){
       let email = error.email;
       credential = error.credential;
    });
-   firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      let uid = user.uid;
-      db.collection('Histories')
-      .get()
-      .then((snapshot) => {
-        console.log(snapshot.docs);
-        setupPost(snapshot.docs);
-      })
-    } 
-    else {
-      console.log('auth: dign out')
-    }
-  });
+   firebase.auth().onAuthStateChanged(user);
 };
 
 //Access jalo function
@@ -109,6 +81,7 @@ export function accessJalo (){
   firebase.auth().signInWithEmailAndPassword(emailLog, passwordLog)
     .then(result => {
       onNavigate('/wall');
+      
       })
       //$('.modal').modal('close')
     .catch((error) => {
@@ -117,21 +90,7 @@ export function accessJalo (){
       let errorMessage = error.message;
       alert(errorMessage, 4000);
     });
-
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        let uid = user.uid;
-        db.collection('Histories')
-        .get()
-        .then((snapshot) => {
-          console.log(snapshot.docs);
-          setupPost(snapshot.docs);
-        })
-      } 
-      else {
-        console.log('auth: dign out')
-      }
-    });
+    firebase.auth().onAuthStateChanged(user);
 };
 
 //publication in wall
@@ -151,23 +110,9 @@ export const historyRef = (title, description) => {
     console.log('funciono');
     console.log(title, description)}; 
 
+  
 
 // let praintCards = document.querySelector("tasks-container");
-let praintCards = document.querySelector('#tasks-container');
-const setupPost = data => {
-  if (data.length) {
-  let html = '';
-  data.forEach(doc => {
-    const post = doc.data()
-    console.log(post);
-    const praint = cardWall(post);
-    html += praint;
-    });
-  praintCards.innerHTML=html;
-} else {
-  praintCards.innerHTML='<p>Login to see Posts</p>';
-}};
-
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     let uid = user.uid;
@@ -183,3 +128,10 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
+//Delete to publiation 
+export const deleteHistory = id => db.collection('Histories').doc(id).delete();
+
+//Edit to publiation 
+//const getHistories = db.collection('Histories').get();
+export const getHistoryEdit = id =>  db.collection('Histories').doc(id).get();
+//export const editHistory = id => db.collection('Histories').doc(id).edit();
