@@ -134,4 +134,4 @@ export const deleteHistory = id => db.collection('Histories').doc(id).delete();
 //Edit to publiation 
 //const getHistories = db.collection('Histories').get();
 export const getHistoryEdit = id =>  db.collection('Histories').doc(id).get();
-//export const editHistory = id => db.collection('Histories').doc(id).edit();
+export const updateHistory = (id, updatedHistory) => db.collection('Histories').doc(id).update(updatedHistory);

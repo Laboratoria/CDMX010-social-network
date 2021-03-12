@@ -1,5 +1,5 @@
 import { onNavigate } from './routers.js';
-import { register, loginGoogle, accessJalo, deleteHistory, getHistoryEdit} from './firebase.js';
+import { register, loginGoogle, accessJalo, deleteHistory, historyRef, getHistoryEdit, updateHistory} from './firebase.js';
 import { cardWall } from './lib/card-wall.js';
 
 //Función para mandar llamar el id que se usa para el evento para ir de home a login.
@@ -64,6 +64,7 @@ window.addEventListener('DOMContentLoaded', () => buttonGoogleInput());
 
 //Publicated porst in Wall
 let buttonHistories = document.getElementById('save');
+let formHistories = document.getElementById('task-formPublication');
 buttonHistories.addEventListener('click', (e) => {
     e.preventDefault();
     console.log('si escucho');
@@ -71,14 +72,15 @@ buttonHistories.addEventListener('click', (e) => {
     let description = document.getElementById('task-contentPublication').value;
     
     historyRef(title, description);
-    console.log(title, description);
-    buttonHistories.reset();
+    formHistories.reset();
 });
 
 
 
 //put all the histories and delete
-let praintCards = document.querySelector('#tasks-container');
+let editStatus = false;
+let id = '';
+let printCards = document.querySelector('#tasks-container');
 export const setupPost = data => {
   if (data.length) {
     let html = '';
@@ -88,30 +90,79 @@ export const setupPost = data => {
         const praint = cardWall(post);
         html += praint;
         });
-    praintCards.innerHTML=html;
+    printCards.innerHTML=html;
     } else {
-    praintCards.innerHTML='<p>Login to see Posts</p>';
+    printCards.innerHTML='<p>Login to see Posts</p>';
     };
 
 const buttonDelete = document.querySelectorAll('.deletePublication');
 buttonDelete.forEach(history => {
     history.addEventListener('click', (e) => {
-         deleteHistory(e.target.dataset.id);
+        if (confirm('¿Estas segurx que quieres eliminar la reseña de viaje?')) {
+            // Save it!
+            console.log('La historia se ha borrado');
+            deleteHistory(e.target.dataset.id);
+          } else {
+            // Do nothing!
+            console.log('No se borro');
+          }
+            
+            
         })
     })
 //edit
+let buttonHistories = document.getElementById('save');
 const buttonEdit = document.querySelectorAll('.editPublication');
 buttonEdit.forEach(history => {
     history.addEventListener('click', async (e) => {
+        try{
         console.log('editando'); 
         console.log(e.target.dataset.id);
         const doc = await getHistoryEdit(e.target.dataset.id);
-        console.log(doc.data());
+        const post = doc.data();
+        const title = document.getElementById('task-InputNewPublication');
+        const description = document.getElementById('task-contentPublication');
+        title.value = post.title;
+        description.value = post.description;
+
+        editStatus = true;
+        id= post.id
+        buttonHistories.innerText = 'Guardar';
         //editeHistory(e.target.dataset.id);
-        })
+        } catch (error) {
+            console.log(error);
+        }
     })
+    
+    });
+
 };
 
+buttonHistories.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const title = document.getElementById('task-InputNewPublication');
+    const description = document.getElementById('task-contentPublication');
+      
+    try {
+        if (!editStatus) {
+            await historyRef(title.value, description.value);
+        } else {
+            await updateHistory(id, {
+              title: title.value,
+              description: description.value,
+            })
+      
+            editStatus = false;
+            id = ''
+            buttonHistories.innerText = 'Save';
+          }
+      
+        formHistories.reset();
+        title.focus();
+    } catch (error) {
+        console.log(error);
+        }
+    });
 
 
 

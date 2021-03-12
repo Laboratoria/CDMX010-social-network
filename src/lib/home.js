@@ -2,7 +2,7 @@
 export const home = () => `
   <div class='home'>
     <div class='logoHome'>
-      <img src='assets/logo-home.png'>
+      <img id= 'logoHome' src='assets/logo-home.png'>
     </div>
     <form class='containerFlexCenter'>
       <button id='newUser' class='buttonHome'>crear</button>
