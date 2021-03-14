@@ -5,7 +5,7 @@ export const wall = () =>`
             <img src='assets/logo-home.png'>
             <img id='avatar' src='assets/avatar.png'>
         </div>
-        <div class='createPublication'>
+        <div class='createPublication' id='history-container'>
             <form class='containerFlexCenter4' id='task-formPublication'>
                 <div class='card'>    
                     <div id='from-groupInput'>

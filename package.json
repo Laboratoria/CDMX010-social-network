@@ -37,5 +37,17 @@
   },
   "dependencies": {
     "firebase": "^8.2.9"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlancaDennis/CDMX010-social-network.git"
+  },
+  "author": "Miriam Nava Muciño miriamnavamucino@gmail.com",
+  "bugs": {
+    "url": "https://github.com/BlancaDennis/CDMX010-social-network/issues"
+  },
+  "homepage": "https://github.com/BlancaDennis/CDMX010-social-network#readme"
 }

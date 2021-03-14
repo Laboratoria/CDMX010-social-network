@@ -1,5 +1,5 @@
 import { onNavigate } from './routers.js';
-import { setupPost } from './main.js';
+import { cardWall } from './lib/card-wall.js';
 
 let firebaseConfig = {
   apiKey: "AIzaSyAphkTjnCyuMEe9J2BlkLSnRf11LDrRKq8",
@@ -10,9 +10,9 @@ let firebaseConfig = {
   appId: "1:438968128013:web:9d1b47242a6f58c825bb44",
   measurementId: "G-8FRZGM62BF"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
 
 //Register function
 export function register (){
@@ -36,7 +36,6 @@ export function register (){
       //     showModals(noVerification);
       //     firebase.auth().signOut();
       //showAlert()
-      
       alert(`Bienvenidx a Jalö ${name}
       !Tu red social para escribir sobre tus lugares magicos en el mundo!`);
   })
@@ -47,10 +46,7 @@ export function register (){
     })
     return true; 
   }
-  firebase.auth().onAuthStateChanged(user);
 };
-
-  
 
 //Login google function
 export function loginGoogle (){
@@ -71,7 +67,6 @@ export function loginGoogle (){
       let email = error.email;
       credential = error.credential;
    });
-   firebase.auth().onAuthStateChanged(user);
 };
 
 //Access jalo function
@@ -81,7 +76,6 @@ export function accessJalo (){
   firebase.auth().signInWithEmailAndPassword(emailLog, passwordLog)
     .then(result => {
       onNavigate('/wall');
-      
       })
       //$('.modal').modal('close')
     .catch((error) => {
@@ -90,47 +84,32 @@ export function accessJalo (){
       let errorMessage = error.message;
       alert(errorMessage, 4000);
     });
-    firebase.auth().onAuthStateChanged(user);
 };
 
-//publication in wall
+//guardar la publicacion a firebase
 const db = firebase.firestore();
-export const historyRef = (title, description) => {
-  db.collection('Histories').doc().set({
-    title,
-    description,
-    }).then(function() {
-      console.log('history saved');
-    }).catch ((error)  => {
-      console.log('Got an error: '. error);
-       console.log(error);
-     });
+export const savePost = (post) => db.collection('Histories')
+  .add({
+    title: post.title,
+    description: post.description,
+    date: Date.now(), 
+  });
+    
+const PostContainer = document.querySelector('#tasks-container');
+export const getData = () => {
+  db.collection("Histories").orderBy("date")
+  .onSnapshot((querySnapshot) =>{
+    PostContainer.innerHTML = "";
+    querySnapshot.forEach((doc) =>{
+      const post = doc.data()
+      post.id = doc.id;
+      PostContainer.innerHTML += cardWall(post);
+      console.log(post);
+    });
+  });
+};
 
-    console.log(historyRef);
-    console.log('funciono');
-    console.log(title, description)}; 
-
-  
-
-// let praintCards = document.querySelector("tasks-container");
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    let uid = user.uid;
-    db.collection('Histories')
-    .get()
-    .then((snapshot) => {
-      console.log(snapshot.docs);
-      setupPost(snapshot.docs);
-    })
-  } 
-  else {
-    console.log('auth: dign out')
-  }
-});
-
-//Delete to publiation 
 export const deleteHistory = id => db.collection('Histories').doc(id).delete();
-
 //Edit to publiation 
 //const getHistories = db.collection('Histories').get();
 export const getHistoryEdit = id =>  db.collection('Histories').doc(id).get();
