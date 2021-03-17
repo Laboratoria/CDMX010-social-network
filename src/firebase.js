@@ -94,19 +94,44 @@ export const savePost = (post) => db.collection('Histories')
     description: post.description,
     date: Date.now(), 
   });
-    
-const PostContainer = document.querySelector('#tasks-container');
+
+// let orderDate= db.collection("Histories").orderBy("date");  orderDate();
+// const PostContainer = document.querySelector('#tasks-container');
+// export const getData = () => {
+//   console.log('ejecucion de getData');
+//   db.collection("Histories").orderBy("date")
+//   .onSnapshot((querySnapshot) =>{
+//     console.log(querySnapshot,'esta es la data')
+//     PostContainer.innerHTML = "";
+//     querySnapshot.forEach((doc) =>{
+//       const post = doc.data()
+//       post.id = doc.id;
+//       PostContainer.innerHTML += cardWall(post);
+//       console.log(post);
+//     });
+//   });
+// };
+
+let orderDate = () => {db.collection('Histories').orderBy('date')};
 export const getData = () => {
-  db.collection("Histories").orderBy("date")
-  .onSnapshot((querySnapshot) =>{
-    PostContainer.innerHTML = "";
+  console.log('ejecucion de getData');
+  
+  db.collection("Histories").
+  onSnapshot((querySnapshot) =>{
+    let html = [];
+    console.log(querySnapshot,'esta es la data');
     querySnapshot.forEach((doc) =>{
-      const post = doc.data()
+      const post = doc.data();
       post.id = doc.id;
-      PostContainer.innerHTML += cardWall(post);
       console.log(post);
+      html += cardWall(post);
+      
+      })
+    const PostContainer = document.getElementById('tasks-container');
+    console.log(PostContainer);
+    PostContainer.innerHTML += html;
+    orderDate();
     });
-  });
 };
 
 export const deleteHistory = id => db.collection('Histories').doc(id).delete();

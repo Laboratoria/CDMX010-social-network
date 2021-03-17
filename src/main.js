@@ -1,5 +1,8 @@
 import { onNavigate } from './routers.js';
-import { register, loginGoogle, accessJalo, deleteHistory, savePost, getHistoryEdit, updateHistory, getData} from './firebase.js';
+import { register, loginGoogle, accessJalo, deleteHistory, savePost, getHistoryEdit, updateHistory} from './firebase.js';
+
+let editStatus = false;
+let id = '';
 
 //Función para mandar llamar el id que se usa para el evento para ir de home a login.
 const createNewUser = () => {
@@ -62,45 +65,50 @@ const buttonSingIn = () => {
 window.addEventListener('DOMContentLoaded', () => buttonSingIn());
 
 
-//Publicated post in Wall
-let buttonHistories = document.getElementById('save');
+//the actions in inputs div wall.
+let buttonHistories = document.getElementsByClassName('save');
 let formHistories = document.getElementById('task-formPublication');
-buttonHistories.addEventListener('click', (e) => {
-    e.preventDefault();
-    console.log('si escucho');
-    let title = document.getElementById('task-InputNewPublication').value;
-    let description = document.getElementById('task-contentPublication').value;
-    savePost(title, description);
-    formHistories.reset();
-});
+const title = document.getElementById('task-InputNewPublication');
+const description = document.getElementById('task-contentPublication');
 
-
-//put all the histories and delete
-let editStatus = false;
-let id = '';
-let printCards = document.querySelector('#tasks-container');
-printCards.addEventListener('click', async (e) => {
+const updatePost = document.querySelector('#history-container');
+updatePost.addEventListener('click', async (e) => {
     if (e.target.classList.contains('save')) {
         e.preventDefault();
-        console.log('yaaas');
-        const post = {
-            title : title.value,
-            description : description.value,
-            date: Date.now(),
-        };
+        console.log('si escucho');
+        await savePost(title.value, description.value);
+        formHistories.reset();
         if (!title.value.trim() || !description.value.trim()) {
-            console.log('Input vacío!');
+            alert('Escribe algo antes de publicar!');
             return;
         }
-    
-        savePost(post)
-        .then((docRef) => {
-            console.log('Document ID: ', docRef.id)
-            title.value = "";
-            description.value = "";
-        })
-        .catch((error) => console.log(error));
     };
+    if (e.target.classList.contains('save')) {
+        e.preventDefault();
+        id= doc.id;     
+        try {
+            if (!editStatus) {
+                await savePost(title.value, description.value);
+            } else {
+                await updateHistory(id, {
+                    title: title.value,
+                    description: description.value,
+                  });
+                editStatus = false;
+                id = '';
+                buttonHistories.innerText = 'Publicar';
+              }
+            formHistories.reset();
+            title.focus();
+        } catch (error) {
+            console.log(error);
+        };
+    };
+});
+
+//put all the histories and delete
+let printCards = document.querySelector('#tasks-container');
+printCards.addEventListener('click', async (e) => {
     if ( e.target.classList.contains('deletePublication')) {
        console.log('si puedo borrar')
        if (confirm('¿Estas segurx que quieres eliminar la reseña de viaje?')) {
@@ -132,37 +140,5 @@ printCards.addEventListener('click', async (e) => {
     }
 });
 
-
-const updatePost = document.querySelector('#history-container');
-updatePost.addEventListener('click', async (e) => {
-   if (e.target.classList.contains('save')) {
-        const title = document.getElementById('task-InputNewPublication');
-        const description = document.getElementById('task-contentPublication'); 
-        id= doc.id;     
-        try {
-            if (editStatus === true) {
-                await updateHistory(id, {
-                    title: title.value,
-                    description: description.value,
-                  });
-                  editStatus = false;
-                  id = ''
-                  buttonHistories.innerText = 'Save';
-            } else {
-                await savePost(title.value, description.value);
-              }
-            formHistories.reset();
-            title.focus();
-        } catch (error) {
-            console.log(error);
-        };
-        buttonHistories.reset();
-    } 
-});
     
 
-
-
-window.addEventListener('DOMContentLoaded', (e) => {
-    getData(e);
-  });

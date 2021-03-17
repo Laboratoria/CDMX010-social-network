@@ -12,7 +12,6 @@
 body {
     margin: 0%;
     padding: 0%;
-    /*background: #890E40;*/
 }
 
 
@@ -432,9 +431,9 @@ body {
         background-image: url(assets/desaviona.png);
         width: 0%;
     }
-};
+}
 
- /* @media only screen and (max-width: 1440px) { 
+/* @media only screen and (max-width: 1440px) {
     div.home {
         background: #890E40;
         display: flex;
@@ -458,8 +457,7 @@ body {
         margin: 0%;
         padding: 3% 0% 2% 33%;
     }
-    
-    
+      
     .containerFlexCenter {
         display: flex;
         flex-direction: column;
@@ -545,7 +543,6 @@ body {
         font-size: medium;
         margin: 2% 7%;
     }
-    
     
     button.buttonLogin {
         background: #FF723F;
@@ -752,7 +749,6 @@ body {
         width: 0%;
     }
     
-    
     button.buttonNewPublication2 {
         background: #FF723F;
         border-radius: 24%;
@@ -857,4 +853,4 @@ body {
         background-image: url(assets/desaviona.png);
         width: 0%;
     }
-}; */
+} */
