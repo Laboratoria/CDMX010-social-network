@@ -74,15 +74,16 @@ updatePost.addEventListener('click', async (e) => {
         console.log(buttonHistories);
         
         try {
+            //Lógica de publicación.
             if (!title.value.trim() || !description.value.trim()) {
                 alert('Escribe algo antes de publicar!');
-                if (!editStatus) {
-                    await savePost(title.value, description.value);
-                };
-            }
-            if (!editStatus) {
+                 if (!editStatus) {
                 await savePost(title.value, description.value);
-            } else {
+                console.log('si se guardo')
+                }     
+            }
+           //Lógica de edición.
+            else {
                 await updateHistory(id, {
                 title: title.value,
                 description: description.value,
@@ -104,6 +105,7 @@ updatePost.addEventListener('click', async (e) => {
 //put all the histories and delete
 let printCards = document.querySelector('#tasks-container');
 printCards.addEventListener('click', async (e) => {
+    //lógica de borrar.
     if ( e.target.classList.contains('deletePublication')) {
        console.log('si puedo borrar')
        if (confirm('¿Estas segurx que quieres eliminar la reseña de viaje?')) {
@@ -116,6 +118,7 @@ printCards.addEventListener('click', async (e) => {
             console.log('No se borro');
             }    
     }; 
+    // Lógica para guardar publicación editada.
     if (e.target.classList.contains('editPublication')) {
         try{
             let buttonHistories = document.getElementsByClassName('save');
