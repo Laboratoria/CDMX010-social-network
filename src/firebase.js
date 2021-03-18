@@ -88,47 +88,30 @@ export function accessJalo (){
 
 //guardar la publicacion a firebase
 const db = firebase.firestore();
-export const savePost = (post) => db.collection('Histories')
-  .add({
-    title: post.title,
-    description: post.description,
-    date: Date.now(), 
-  });
-
-// let orderDate= db.collection("Histories").orderBy("date");  orderDate();
-// const PostContainer = document.querySelector('#tasks-container');
-// export const getData = () => {
-//   console.log('ejecucion de getData');
-//   db.collection("Histories").orderBy("date")
-//   .onSnapshot((querySnapshot) =>{
-//     console.log(querySnapshot,'esta es la data')
-//     PostContainer.innerHTML = "";
-//     querySnapshot.forEach((doc) =>{
-//       const post = doc.data()
-//       post.id = doc.id;
-//       PostContainer.innerHTML += cardWall(post);
-//       console.log(post);
-//     });
-//   });
-// };
+export const savePost = (title, description) => {
+db.collection('Histories').doc().set({
+    title,
+    description
+  }).then(function() {
+    console.log('history saved');
+  }).catch ((error) => {
+    console.log('Got an error: '. error);
+       console.log(error);
+     });
+  }; 
 
 let orderDate = () => {db.collection('Histories').orderBy('date')};
 export const getData = () => {
   console.log('ejecucion de getData');
-  
-  db.collection("Histories").
-  onSnapshot((querySnapshot) =>{
+  db.collection("Histories")
+  .onSnapshot((querySnapshot) =>{
     let html = [];
-    console.log(querySnapshot,'esta es la data');
-    querySnapshot.forEach((doc) =>{
+    querySnapshot.forEach(doc =>{
       const post = doc.data();
       post.id = doc.id;
-      console.log(post);
       html += cardWall(post);
-      
       })
     const PostContainer = document.getElementById('tasks-container');
-    console.log(PostContainer);
     PostContainer.innerHTML += html;
     orderDate();
     });
