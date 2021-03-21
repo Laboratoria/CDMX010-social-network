@@ -1,5 +1,6 @@
 import { onNavigate } from './routers.js';
 import { cardWall } from './lib/card-wall.js';
+import { numLikes } from './main.js'
 
 let firebaseConfig = {
   apiKey: "AIzaSyAphkTjnCyuMEe9J2BlkLSnRf11LDrRKq8",
@@ -88,16 +89,22 @@ export function accessJalo (){
 
 //guardar la publicacion a firebase
 const db = firebase.firestore();
-export const savePost = (title, description) => {
-db.collection('Histories').doc().set({
-    title,
-    description
-  }).then(function() {
-    console.log('history saved');
-  }).catch ((error) => {
-    console.log('Got an error: '. error);
-       console.log(error);
-     });
+
+export function activeUser() {
+  return firebase.auth().currentUser;
+};
+
+export const savePost = (title, description, like) => {
+  db.collection('Histories').doc().set({
+      title,
+      description,
+      like
+    }).then(function() {
+      console.log('history saved');
+    }).catch ((error) => {
+      console.log('Got an error: '. error);
+        console.log(error);
+      });
   }; 
 
 let orderDate = () => {db.collection('Histories').orderBy('date')};
@@ -105,20 +112,26 @@ export const getData = () => {
   console.log('ejecucion de getData');
   db.collection("Histories")
   .onSnapshot((querySnapshot) =>{
-    let html = [];
-    querySnapshot.forEach(doc =>{
+   let html = '';
+   let PostContainer = document.getElementById('tasks-container');
+    PostContainer.innerHTML = html;
+    querySnapshot.forEach( async (doc)  =>{
       const post = doc.data();
       post.id = doc.id;
+      console.log(post.id);
+
+      const likesArray = post['like'].length;   
+      console.log(likesArray);
       html += cardWall(post);
-      })
-    const PostContainer = document.getElementById('tasks-container');
+      });
+
     PostContainer.innerHTML += html;
+    
     orderDate();
+    numLikes();
     });
 };
 
 export const deleteHistory = id => db.collection('Histories').doc(id).delete();
-//Edit to publiation 
-//const getHistories = db.collection('Histories').get();
 export const getHistoryEdit = id =>  db.collection('Histories').doc(id).get();
 export const updateHistory = (id, updatedHistory) => db.collection('Histories').doc(id).update(updatedHistory);

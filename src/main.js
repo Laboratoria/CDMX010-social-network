@@ -1,5 +1,5 @@
 import { onNavigate } from './routers.js';
-import { register, loginGoogle, accessJalo, deleteHistory, savePost, getHistoryEdit, updateHistory} from './firebase.js';
+import { register, loginGoogle, accessJalo, deleteHistory, savePost, getHistoryEdit, updateHistory, activeUser, getData } from './firebase.js';
 //Función para mandar llamar el id que se usa para el evento para ir de home a login.
 const createNewUser = () => {
     let createUser = document.getElementById('newUser');
@@ -60,7 +60,9 @@ const buttonSingIn = () => {
 
 window.addEventListener('DOMContentLoaded', () => buttonSingIn());
 
+
 //the actions in inputs div wall.
+const like = [];
 let editStatus = false;
 let id = '';
 let buttonHistories = document.getElementsByClassName('save');
@@ -74,16 +76,13 @@ updatePost.addEventListener('click', async (e) => {
         console.log(buttonHistories);
         
         try {
-            //Lógica de publicación.
             if (!title.value.trim() || !description.value.trim()) {
                 alert('Escribe algo antes de publicar!');
-                 if (!editStatus) {
-                await savePost(title.value, description.value);
-                console.log('si se guardo')
-                }     
             }
-           //Lógica de edición.
-            else {
+            if (!editStatus) {
+                await savePost(title.value, description.value, like);
+            }
+             else {
                 await updateHistory(id, {
                 title: title.value,
                 description: description.value,
@@ -101,11 +100,9 @@ updatePost.addEventListener('click', async (e) => {
             }
         };
 });
-
 //put all the histories and delete
 let printCards = document.querySelector('#tasks-container');
 printCards.addEventListener('click', async (e) => {
-    //lógica de borrar.
     if ( e.target.classList.contains('deletePublication')) {
        console.log('si puedo borrar')
        if (confirm('¿Estas segurx que quieres eliminar la reseña de viaje?')) {
@@ -118,7 +115,6 @@ printCards.addEventListener('click', async (e) => {
             console.log('No se borro');
             }    
     }; 
-    // Lógica para guardar publicación editada.
     if (e.target.classList.contains('editPublication')) {
         try{
             let buttonHistories = document.getElementsByClassName('save');
@@ -137,7 +133,31 @@ printCards.addEventListener('click', async (e) => {
         } catch (error) {
             console.log(error);
         }
-    }
-});
+    };
+    });
 
-
+export const numLikes = () => {
+    const desenviaja = document.querySelectorAll('.desenviaja');
+    const user = activeUser();
+    desenviaja.forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
+            // define los ids indivisuales
+            console.log('like funciono');
+            const idlike = e.target.dataset.id;
+            console.log(idlike, 'este es el id de la historia para like');
+            const docJalo = await getHistoryEdit(idlike);
+            const docGet = docJalo.data();
+            const mailLike = docGet.like;
+            if (mailLike.includes(user.email)) {
+                const filteredEmails = mailLike.filter((email) => email !== user.email);
+                const updates = { like: filteredEmails };
+                await updateHistory(idlike, updates);
+                console.log(updateHistory)
+                } else {
+                mailLike.push(user.email);
+                const updates = { like: mailLike };
+                await updateHistory(idlike, updates);
+                };
+        });
+    });
+    };
