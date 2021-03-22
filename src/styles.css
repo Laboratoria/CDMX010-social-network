@@ -291,9 +291,9 @@ h3.h3Publication {
 .enviajaCard {
     display: flex;
     justify-content: flex-end;
-    width: 158%;
-    padding: 4% 70%;
-    margin: 1% 0% 0% -51%;
+    width: 157%;
+    padding: 1% 73%;
+    margin: -2% 0% 0% -50%;
 }
 
 .desenviajaDiv {
@@ -305,9 +305,11 @@ h3.h3Publication {
 .desenviaja {
     display: flex;
     justify-content: center;
-    padding: 22% 22% 0% 0%;
+    padding: 22% 23% 0% 0%;
+    margin: 0% 0% 2% 0%;
     background-image: url(assets/desaviona.png);
     width: 9%;
+    border: none;
 }
 
 .buttonCard {
@@ -320,12 +322,13 @@ h3.h3Publication {
 
 
 button#avatarPublication {
-    display: flex;
+    isplay: flex;
     justify-content: center;
     background-image: url(assets/avatar-publication.png);
     padding: 15% 0% 0% 0%;
     margin: 0% 100% 0% -21%;
-    width: 16%;
+    width: 15%;
+    border: none;
 }
 
 

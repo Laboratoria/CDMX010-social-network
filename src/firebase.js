@@ -30,13 +30,7 @@ export function register (){
     document.getElementById("ok").classList.remove("ocultar");
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((result) => {
-      //Signed in
-      //verificarPasswords();
       onNavigate('/wall');
-      // } else {
-      //     showModals(noVerification);
-      //     firebase.auth().signOut();
-      //showAlert()
       alert(`Bienvenidx a Jalö ${name}
       !Tu red social para escribir sobre tus lugares magicos en el mundo!`);
   })
@@ -115,23 +109,17 @@ export const getData = () => {
    let html = '';
    let PostContainer = document.getElementById('tasks-container');
     PostContainer.innerHTML = html;
-    querySnapshot.forEach( async (doc)  =>{
+    querySnapshot.forEach( async (doc)  => {
       const post = doc.data();
-      post.id = doc.id;
-      console.log(post.id);
-
-      const likesArray = post['like'].length;   
-      console.log(likesArray);
+      post.id = doc.id;   
       html += cardWall(post);
-      });
-
+    });
     PostContainer.innerHTML += html;
-    
     orderDate();
     numLikes();
-    });
+  });
 };
 
-export const deleteHistory = id => db.collection('Histories').doc(id).delete();
-export const getHistoryEdit = id =>  db.collection('Histories').doc(id).get();
+export const deleteHistory = (id) => db.collection('Histories').doc(id).delete();
+export const getHistoryEdit = (id) =>  db.collection('Histories').doc(id).get();
 export const updateHistory = (id, updatedHistory) => db.collection('Histories').doc(id).update(updatedHistory);
