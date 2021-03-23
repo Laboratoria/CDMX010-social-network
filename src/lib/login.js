@@ -1,5 +1,4 @@
-//formulario para crear tu cuenta.
-//import { verificarPasswords } from './main.js';
+// formulario para crear tu cuenta.
 
 export const login = () => `
     <div class='theLogin'>
@@ -26,7 +25,4 @@ export const login = () => `
             Cargando...
         </div>
         <!-- Fin Mensajes de Verificación -->
-    </div>
-    `;
-
-
+    </div>`;

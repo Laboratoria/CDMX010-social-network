@@ -1,5 +1,5 @@
-//This is the wall
-export const wall = () =>`
+// This is the wall
+export const wall = () => `
     <div class='wall'>
         <div class='headerWall'>
             <img src='assets/logo-home.png'>
@@ -19,5 +19,4 @@ export const wall = () =>`
             </form>
         </div>
         <div class='createPublication2' id='tasks-container'></div>
-    </div> 
-    `;
+    </div>`;

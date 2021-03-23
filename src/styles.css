@@ -40,7 +40,6 @@ div.home {
     margin: 0% 5% 0% 0%;
 }
 
-
 button.buttonHome {
     background: #FF723F;
     border-radius: 24%;
@@ -118,7 +117,6 @@ h3 {
     margin: 2% 7%;
 }
 
-
 button.buttonLogin {
     background: #FF723F;
     border-radius: 24%;
@@ -163,7 +161,6 @@ button.buttonLogin {
     margin: 0% 8% 2% 2%;
     padding: 1% 1% 0% 0%;
 }
-
 
 button.buttonsLogin {
     background: #FF723F;
@@ -320,7 +317,6 @@ h3.h3Publication {
     font-family: 'Comfortaa', cursive;
 }
 
-
 button#avatarPublication {
     isplay: flex;
     justify-content: center;
@@ -331,7 +327,6 @@ button#avatarPublication {
     border: none;
 }
 
-
 button#desenviaja {
     display: flex;
     justify-content: space-evenly;
@@ -340,7 +335,6 @@ button#desenviaja {
     background-image: url(assets/desaviona.png);
     width: 0%;
 }
-
 
 button.buttonNewPublication2 {
     background: #FF723F;
@@ -384,7 +378,6 @@ button.buttonNewPublication2 {
     margin: 1%;
     font-family: 'Comfortaa', cursive;
 }
-
 
 button.buttonNewPublication {
     background: #FF723F;

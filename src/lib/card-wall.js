@@ -11,11 +11,10 @@ export const cardWall = (post) => `
         </div>
         <div class='enviajaCard'>
             <button class='desenviaja' data-id = '${post.id}'></button>
-            <div class= 'desenviajaDiv' data-id ='${post.id}'>${post['like'].length}</div>
+            <div class= 'desenviajaDiv' data-id ='${post.id}'>${post.like.length}</div>
         </div>
         <div class='buttonCard'>
             <button class='buttonNewPublication2 editPublication' data-id = '${post.id}'>Editar</button>
             <button class='buttonNewPublication2 deletePublication' data-id = '${post.id}'>Borrar</button>
         </div>
-    </div>
-    `;
+    </div>`;

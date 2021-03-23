@@ -1,4 +1,4 @@
-//Vista que te da acceso cuando ya te encuentras logueada.
+// Vista que te da acceso cuando ya te encuentras logueada.
 export const homeLogin = () => `
   <div class='home-login'>
     <div class='logoHomeLogin'>
