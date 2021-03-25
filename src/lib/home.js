@@ -1,4 +1,4 @@
-// Primera página donde te muestra los botones para acceder 
+// Primera página donde te muestra los botones para acceder
 // a logearte u otro botón para entrar si ya estas logueada.
 export const home = () => `
   <div class='home'>

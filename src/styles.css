@@ -318,7 +318,7 @@ h3.h3Publication {
 }
 
 button#avatarPublication {
-    isplay: flex;
+    display: flex;
     justify-content: center;
     background-image: url(assets/avatar-publication.png);
     padding: 15% 0% 0% 0%;

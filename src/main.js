@@ -15,7 +15,7 @@ const createNewUser = () => {
   });
 };
 
-window.addEventListener('DOMContentLoaded', () => createNewUser());
+window.addEventListener('load', () => createNewUser());
 
 // Función para mandar llamar el id que se usa para el evento para ir de home a home-login.
 const oldUser1 = () => {
@@ -26,7 +26,7 @@ const oldUser1 = () => {
   });
 };
 
-window.addEventListener('DOMContentLoaded', () => oldUser1());
+window.addEventListener('load', () => oldUser1());
 
 // login to wall
 const buttonLogin = () => {
@@ -38,7 +38,7 @@ const buttonLogin = () => {
   });
 };
 
-window.addEventListener('DOMContentLoaded', () => buttonLogin());
+window.addEventListener('load', () => buttonLogin());
 
 // Google to wall
 const buttonGoogle = () => {
@@ -49,7 +49,7 @@ const buttonGoogle = () => {
   });
 };
 
-window.addEventListener('DOMContentLoaded', () => buttonGoogle());
+window.addEventListener('load', () => buttonGoogle());
 
 // SingIn with inputs
 const buttonSingIn = () => {
@@ -60,7 +60,7 @@ const buttonSingIn = () => {
   });
 };
 
-window.addEventListener('DOMContentLoaded', () => buttonSingIn());
+window.addEventListener('load', () => buttonSingIn());
 
 // the actions in inputs div wall.
 const like = [];
