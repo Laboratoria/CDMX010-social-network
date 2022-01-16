@@ -1,0 +1,655 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;700&display=swap');
+/* font-family: 'Fredoka One', cursive;
+font-family: 'Montserrat', sans-serif; */
+
+html{
+    font-size: 12px;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #703E79;
+    text-align: center;
+}
+p{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+h2{
+    font-size: 20px; 
+}
+h3{
+    font-size: 18px;
+    left: 70px;
+}
+/* Welcome View */
+#welcomeView{
+    background-image: url("img/rs_welcomeback.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+#logo{
+    width: 80%;
+    display: block;
+    margin: 25px auto;
+}
+#login{
+    position: absolute;
+    width: 237px;
+    height: 42px;
+    left: 62px;
+    top: 502px;
+    background: #E9429C;
+    border-radius: 63px;
+    border-color: #E9429C;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+
+#signUp{
+    position: absolute;
+    width: 237px;
+    height: 42px;
+    left: 62px;
+    top: 562px;
+    background: #E9429C;
+    border-color: #E9429C;
+    border-radius: 63px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+/*LogIn View*/
+/* #loginViewContainer{
+    /* max-width: 1200px;
+    height: auto;
+    box-sizing: border-box;
+    flex-basis: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;  */
+    /* background-image: url(img/rs_back.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh; 
+} */
+.container{
+    background-image: url(img/rs_back.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
+}
+#loginEmail, #signupEmail{
+    position: absolute;
+    width: 278px;
+    height: 37px;
+    left: 43px;
+    top: 180px;
+    background: #FFFAFD;
+    border: 2px solid #D797D3;
+    box-sizing: border-box;
+    font-family:  'Montserrat', sans-serif;
+}
+#loginPassword,  #signupPassword{
+    position: absolute;
+    width: 278px;
+    height: 37px;
+    left: 43px;
+    top: 239px;
+    background: #FFFBFD;
+    border: 2px solid #D797D3;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+#signupPasswordAgain{
+    position: absolute;
+    width: 278px;
+    height: 37px;
+    left: 43px;
+    top: 300px;
+    background: #FFFBFD;
+    border: 2px solid #D797D3;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+#enter{
+    position: absolute;
+    width: 281px;
+    height: 44px;
+    left: 40px;
+    top: 322px;
+    background: #E9429C;
+    border-color: #E9429C;
+    border-radius: 63px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+#loginViewContainer h3{
+    position: absolute;
+    top: 400px;
+    text-align: center;
+}
+#signUpViewContainer h3{
+    position: absolute;
+    top: 420px;
+    text-align: center;
+}
+#gmailIcon{
+    width: 20%;
+    position: absolute;
+    top: 10px;
+    left: 50px;
+}
+.btnGmail{
+    position: absolute;
+    width: 126px;
+    height: 44px;
+    left: 43px;
+    top: 476px;
+    background: #FFFFFF;
+    border: 2px solid #D797D3;
+    box-sizing: border-box;
+    border-radius: 63px;
+}
+#facebookIcon{
+    width:25%;
+    position: absolute;
+    top: 5px;
+    left: 50px;
+}
+.btnFacebook{
+    position: absolute;
+    width: 126px;
+    height: 44px;
+    left: 194px;
+    top: 476px;
+
+    background: #FFFFFF;
+    border: 2px solid #D797D3;
+    box-sizing: border-box;
+    border-radius: 63px;
+}
+#returnArrow{
+    position: absolute;
+    left: 80%;
+    right: 11.11%;
+    top: 92.5%;
+    bottom: 2.81%;
+    width: 10%;
+}
+#loginPasswordAgain{
+    position: absolute;
+    width: 278px;
+    height: 37px;
+    left: 43px;
+    top: 299px; 
+    background: #FFFBFD;
+    border: 2px solid #D797D3;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+#btnSignUp{
+    position: absolute;
+    width: 281px;
+    height: 44px;
+    left: 40px;
+    top: 382px;
+    background: #E9429C;
+    border-color: #E9429C;
+    border-radius: 63px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+
+/* pantallas extra */
+/*#xView{
+    margin-top: -60px;
+}
+#header{
+    margin-top: 90px;
+}
+#logoHeader{
+    width: 50%;
+    position: absolute;
+    display: inline-block;
+    left: 97px;
+}
+#btnHome{
+    position: absolute;
+    width: 10%;
+    display: inline-block;
+    left: 55px;
+    /* margin: 10px 25px; */
+/*}
+#btnMenu{
+    position: absolute;
+    width: 10%;
+    display: inline-block;
+    left: 290px;
+    /* margin: 10px 280px; */
+/*}
+nav{
+    width: 60%;
+    margin-left: 95px;
+    text-align: right;
+}
+ul{
+    list-style: none;
+}
+li#toTownHall{
+    margin-top: 60px;
+}
+li:hover{
+    background-color: rgba(233, 66, 156, 0.67);
+}
+a:hover{
+    color: white;
+}
+.enable-menu{
+    display: block;
+}
+.disable-menu{
+    display: none;
+}*/
+#search{
+    position: relative;
+    width: 288px;
+    height: 37px;
+    left: 45px;
+    top: 70px;
+    background: #FFFBFD;
+    border: 2px solid #D797D3;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+#searchIcon{
+    position: absolute;
+    left: 290px;
+}
+#sectionView h2{
+    position: relative;
+    top: 78px;
+    display: block;
+}
+#placeView{
+    position: absolute;
+    display: inline-block;
+    top: 230px;
+    left:55px;
+}
+#placePhoto{
+    width: 85%;
+    border: 5px solid #E9429C;
+    display: inline-block;
+
+}
+#placeView h3{
+    color: white;
+    position: relative;
+    margin: -5px;
+    top: -41px;
+    left: -80px;
+}
+#namePlace{
+    /* width: 265px;
+    height: 44px;
+    left: 0px;
+    top: 118px;
+    margin-right: 0;
+    background: rgba(233, 66, 156, 0.67); */
+    text-align: center;
+    /* display: inline-block; */
+    /* position: absolute; */
+}
+#likeIcon{
+    width: 8%;
+    top: 125px;
+    /* position: absolute; */
+    left: 220px;
+}
+
+#placesContainer{
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+#rectangle {
+    width: 288px;
+    height: 54px;
+    left: 0px;
+    top: 118px;
+    background: rgba(233, 66, 156, 0.67);
+    margin-right: 0;
+    margin-bottom: 20px;
+}
+
+#placeImg{
+    width: 278px;
+    height: 168px;
+    left: 41px;
+    top: 180px;
+    border: 5px solid #E9429C;
+    /* display: inline-block; */
+}
+
+/* #delegation{
+    display: inline-block;
+} */
+
+#dataContainer{
+    display: flex;
+    margin-top: 100px;
+}
+
+#one-container h3{
+    margin: 0 0;
+}
+#one-container h4{
+    margin: 0 0;
+}
+
+/* #info{
+    left: 44px;
+} */
+#placeViewSingle{
+    text-align: center;
+    margin-top: 70px;
+}
+
+#pPlace{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 13px;
+    color: #000000;
+    text-align: justify;
+    width: 80vw;
+    margin-left: 35px;
+}
+
+#postContainer{
+    text-align: center;
+}
+
+.postIt{
+    width: 114px;
+    height: 30px;
+    left: 203px;
+    top: 598px;
+    background: #E9429C;
+    border-radius: 63px;
+    color: white;
+}
+
+.inpStyle{
+    border: 2px solid #E9429C;
+    font-family:  'Montserrat', sans-serif;
+    width: 80vw;
+}
+
+#reviewCard{
+    position: relative;
+    width: 278px;
+    height: auto;
+    left: 44px;
+    background: #FFFAFD;
+    border: 5px solid #D797D3;
+    box-sizing: border-box;
+    margin: 15px 0;
+}
+
+.btnStyle{
+    background: #d03beb;;
+    color:  white;
+    border-radius: 63px;
+    text-align: center;
+    font-family:  'Montserrat', sans-serif;
+    width: 87px;
+    font-weight: bold;
+}
+
+/*------------------- INICIA MENÚ ------------------------------------*/
+body {
+margin: 0px;
+padding-right: 0px;
+padding-left: 0px;
+}
+
+.barra{
+    width:950px;/*ancho*/
+    margin:0 auto;
+}
+
+#menu{
+    background: #D797D3; /* color de la barra*/
+    color: #333; /*color de las tres barritas*/
+    height: 50px;
+    border-bottom: 1px solid rgba(0,0,0,.05); /* borde inferior de la barra*/
+    width:100%;
+    position:fixed; 
+    z-index:101; 
+}
+
+#menu ul,#menu li{
+    margin: 0px auto;
+    padding:0 0;
+    list-style:none;
+}
+
+#menu .iconos{
+    float:right;
+}
+
+#menu li{ /*Opciones fijas en el menú*/
+    float:left; /*Colocación de los bloques con las opciones*/
+    display:inline;
+    position:relative;
+    font: 14px Arial, sans-serif;/*tamaño y fuente del texto */
+}
+
+#menu ul a{
+    display: block;
+    line-height: 50px; /*Centrar el texto*/
+    padding: 0 14px;
+    color: #333;/*color del texto*/
+    text-transform: uppercase;/*letras mayúsculas*/
+    letter-spacing: 1.5px;/*espacio entre letras*/
+    text-decoration: none; /*Quita el subrayado*/
+}
+
+#menu li a:hover{
+    color: #999;/*color del texto al pasar el ratón*/
+    text-decoration: none; /*Quita el subrayado*/
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -ms-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+}
+
+#menu input{ /*Se refiere al estilo del checkbox*/
+    display:none;
+    margin:0 0;
+    padding:0 0;
+    width:50px; /*Ancho*/
+    height:50px;
+    opacity:0;
+    cursor:pointer;
+}
+
+#menu label{ /* contenedor de menu hamburguesa*/
+    display:none;
+    width: 50px; /*ancho*/
+    height: 50px;
+    line-height: 50px; /*para centrar el icono de menu */
+    text-align: center;
+    font-size: 19px;
+    vertical-align: middle;
+}
+
+#menu ul.menus{
+    height: auto;
+    overflow: hidden;
+    width: 170px; /*ancho*/
+    background: #F1F1F1;/*color del fondo del submenu*/
+    position: absolute;
+    z-index: 99;
+    display: none;
+    border: 1px solid rgba(0,0,0,.05);
+}
+
+#menu ul.menus li{
+    display: block; /*Se ven visibles las opciones del menú*/
+    width: 100%; /*ancho*/
+    font: 12px  Arial, sans-serif;/*tamaño y fuente del  texto del submenu*/
+    text-transform: uppercase; /*Trasnforma las minúsculas*/
+    border-bottom: 1px solid #E9E9E9;
+}
+
+#menu ul.menus li:last-child{
+    border-bottom:none;
+}
+
+#menu ul.menus a{
+    color: #333;/*color del  texto del submenu*/
+    line-height: 35px;
+}
+
+#menu li:hover ul.menus{
+    display:block;
+}
+#menu ul.menus a:hover{
+    color: #999;/*color del  texto del submenu al pasar el ratón*/
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -ms-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+}
+
+.iconos a{
+padding: 0 10px;
+height: 50px;
+display: inline-block;
+}
+
+#menu .iconos .fa{
+font-size:24px; /*Tamaño de los iconos */
+line-height: 50px;
+color: #333;/*color del icono social*/
+-webkit-transition: all .1s ease-in-out;
+-moz-transition: all .1s ease-in-out;
+-ms-transition: all .1s ease-in-out;
+-o-transition: all .1s ease-in-out;
+transition: all .1s ease-in-out;
+}
+
+#menu ul .fa{
+    font-size: 8px;
+    position: relative;
+    top: -1px;
+}
+
+#menu .iconos .fa:hover{
+color: #999;/*color del icono social al pasar el ratón*/
+}
+
+/*---------Menu Responsive------------*/
+@media screen and (max-width: 768px){ 
+#menu{
+position:fixed; 
+z-index:101; 
+}
+
+#menu ul{
+    background:#F1F1F1;/*color del desplegable del menu movil*/
+    position:absolute;
+    top:100%;
+    right:0;
+    left:0;
+    z-index:3;
+    height:auto;
+    display:none;
+}
+
+#menu ul.menus{
+width:100%;
+position:static;
+padding-left:20px
+}
+
+#menu li{
+display:block;
+float:none;
+width:auto;
+font: 11px  Arial, sans-serif;
+}
+
+#menu ul a{
+    display: block;
+    line-height: 40px;
+    padding: 0 14px;/*tamaño y fuente del  menu movil*/
+    text-decoration: none; /*Quita el subrayado*/
+}
+
+#menu input,#menu label{
+position:absolute;
+top:0;
+left:0;
+display:block;
+}
+
+#menu input{
+z-index:4
+}
+
+#menu input:checked + label{
+color:#333;/*color de las tres barritas cuando se da click*/
+}
+
+#menu input:checked ~ ul{
+display:block;
+top:50px;
+}
+
+.barra{
+    width:95%!important;
+}
+}
+
+header{
+    padding-top:50px;
+}
+/*fin menu responsive*/
+#deleteIcon{
+    width: 20px;
+}
+#editIcon{
+    width: 20px;
+}
